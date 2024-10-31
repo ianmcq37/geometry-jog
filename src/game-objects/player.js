@@ -14,5 +14,38 @@ export class Player extends Phaser.GameObjects.Rectangle {
 
         //set our initial scale (increasing makes player bigger)
         this.setScale(1);
+
+        this.scene.input.on("pointerdown", () => this.jump(), this);
+
+        this.space = this.scene.input.keyboard.addKey(
+            Phaser.Input.Keyboard.KeyCodes.SPACE
+        );
+
+        this.jumpTween = undefined;
+    }
+
+    update() {
+        if(Phaser.Input.Keyboard.JustDown(this.space)) {
+            this.jump();
+        } else if (this.body.blocked.down) {
+            this.jumpTween?.stop();
+            this.rotation = 0;
+        }
+    }
+
+    jump() {
+        if(!this.body.blocked.down) {
+            return;
+            //don't jump if in air
+        }
+
+        this.body.setVelocityY(-250);
+
+        this.jumpTween = this.scene.tweens.add({
+            targets: this,
+            duraiton: 1000,
+            repeat: -1,
+            angle: { from: 0, to: 360 }
+        });
     }
 }

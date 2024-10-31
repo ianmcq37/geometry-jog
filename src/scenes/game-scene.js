@@ -18,4 +18,8 @@ export class GameScene extends Phaser.Scene {
 
         this.player = new Player (this, this.width / 2, this.height / 2);
     }
+
+    update() {
+        this.player.update();
+    }
 }
