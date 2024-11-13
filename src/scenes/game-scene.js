@@ -45,5 +45,6 @@ export class GameScene extends Phaser.Scene {
 
     hitObstacle(player, obstacle) {
         console.log("you died");
+        this.scene.start("gameover");
     }
 }

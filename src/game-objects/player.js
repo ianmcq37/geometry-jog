@@ -44,7 +44,7 @@ export class Player extends Phaser.GameObjects.Rectangle {
             //don't jump if in air
         }
 
-        this.body.setVelocityY(-250);
+        this.body.setVelocityY(-500);
 
         this.jumpTween.restart();
 

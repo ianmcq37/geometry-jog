@@ -3,6 +3,7 @@ import "./css/style.css";
 import Phaser from "phaser";
 import { GameScene } from "./scenes/game-scene";
 import { HEIGHT, WIDTH } from "./constants";
+import { GameOver } from "./scenes/game-over";
 
 /** @type { Phaser.Types.Core.GameConfig } */
 const config = {
@@ -13,11 +14,11 @@ const config = {
 		autoCenter: Phaser.Scale.CENTER_BOTH,
 	},
 	parent: "app",
-    scene: [GameScene],
+    scene: [GameScene, GameOver],
 	physics: {
 		default: "arcade",
 		arcade: {
-			gravity: { x:0, y:500 },
+			gravity: { x:0, y:1000 },
 			debug: true,
 		},
 	},
